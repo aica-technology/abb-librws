@@ -33,13 +33,13 @@ RAPIDExecutionInfo getRAPIDExecution(RWSClient& client);
  * https://developercenter.robotstudio.com/api/RWS?urls.primaryName=RAPID%20Service
  *
  * \param client RWS client
- * \param mastership {implicit | explicit} by default mastership is explicit
+ * \param mastership {implicit | explicit} by default mastership is implicit
  *
  * There can be a delay between the function returns and when the RAPID program enters the "running" state.
  *
  * \throw \a std::runtime_error if something goes wrong.
  */
-void startRAPIDExecution(RWSClient& client, Mastership const& mastership = Mastership::Explicit);
+void startRAPIDExecution(RWSClient& client, Mastership const& mastership = Mastership::Implicit);
 
 /**
  * \brief A function for stopping RAPID execution in the robot controller.
@@ -62,11 +62,11 @@ void stopRAPIDExecution(RWSClient& client, StopMode stopmode = StopMode::stop, U
  * https://developercenter.robotstudio.com/api/RWS?urls.primaryName=RAPID%20Service
  *
  * \param client RWS client
- * \param mastership {implicit | explicit} by default mastership is explicit
+ * \param mastership {implicit | explicit} by default mastership is implicit
  *
  * \throw \a std::runtime_error if something goes wrong.
  */
-void resetRAPIDProgramPointer(RWSClient& client, Mastership const& mastership = Mastership::Explicit);
+void resetRAPIDProgramPointer(RWSClient& client, Mastership const& mastership = Mastership::Implicit);
 
 /**
  * \brief A function for retrieving information about the RAPID modules of a RAPID task defined in the robot controller.
@@ -125,12 +125,12 @@ std::string getRAPIDSymbolData(RWSClient& client, RAPIDResource const& resource)
  * \param data for the RAPID symbol's new data.
  * \param initval true -- set the initial value, false -- set the current value.
  * \param log changes will be updated in elog (not applicable in updating initial value)
- * \param mastership {implicit | explicit} by default mastership is explicit
+ * \param mastership {implicit | explicit} by default mastership is implicit
  *
  * \throw \a RWSError if something goes wrong.
  */
 void setRAPIDSymbolData(RWSClient& client, const RAPIDResource& resource, const RAPIDSymbolDataAbstract& data,
-                        bool initval = false, bool log = false, Mastership const& mastership = Mastership::Explicit);
+                        bool initval = false, bool log = false, Mastership const& mastership = Mastership::Implicit);
 
 /**
  * \brief A function for setting the data of a RAPID symbol.
@@ -140,12 +140,12 @@ void setRAPIDSymbolData(RWSClient& client, const RAPIDResource& resource, const 
  * \param data the RAPID symbol's new data.
  * \param initval true -- set the initial value, false -- set the current value.
  * \param log changes will be updated in elog (not applicable in updating initial value)
- * \param mastership {implicit | explicit} by default mastership is explicit
+ * \param mastership {implicit | explicit} by default mastership is implicit
  *
  * \throw \a RWSError if something goes wrong.
  */
 void setRAPIDSymbolData(RWSClient& client, const RAPIDResource& resource, const std::string& data, bool initval = false,
-                        bool log = false, Mastership const& mastership = Mastership::Explicit);
+                        bool log = false, Mastership const& mastership = Mastership::Implicit);
 
 /**
  * \brief A function for loading a module to the robot controller.
@@ -156,12 +156,12 @@ void setRAPIDSymbolData(RWSClient& client, const RAPIDResource& resource, const 
  * \param task specifying the RAPID task.
  * \param resource specifying the file's directory and name.
  * \param replace indicating if the actual module into the controller must be replaced by the new one or not.
- * \param mastership {implicit | explicit} by default mastership is explicit
+ * \param mastership {implicit | explicit} by default mastership is implicit
  *
  * \throw \a std::exception if something goes wrong.
  */
 void loadModuleIntoTask(RWSClient& client, const std::string& task, const FileResource& resource,
-                        const bool replace = false, Mastership const& mastership = Mastership::Explicit);
+                        const bool replace = false, Mastership const& mastership = Mastership::Implicit);
 
 /**
  * \brief A function for unloading a module to the robot controller.
@@ -171,10 +171,10 @@ void loadModuleIntoTask(RWSClient& client, const std::string& task, const FileRe
  * \param client RWS client
  * \param task specifying the RAPID task.
  * \param module_name name of the module to unload.
- * \param mastership {implicit | explicit} by default mastership is explicit
+ * \param mastership {implicit | explicit} by default mastership is implicit
  *
  * \throw \a std::exception if something goes wrong.
  */
 void unloadModuleFromTask(RWSClient& client, const std::string& task, const std::string& module_name,
-                          Mastership const& mastership = Mastership::Explicit);
+                          Mastership const& mastership = Mastership::Implicit);
 }  // namespace abb::rws::v2_0::rw::rapid
