@@ -924,7 +924,7 @@ rw::io::IOSignalInfo RWSInterface::getIOSignals()
 
   for (auto&& node : xmlFindNodes(doc, { "class", "ios-signal-li" }))
   {
-    std::string const name = xmlFindTextContent(node, { "class", "name" });
+    std::string const name = xmlNodeGetAttributeValue(node,"title");
     std::string const value = xmlFindTextContent(node, { "class", "lvalue" });
     std::string const type = xmlFindTextContent(node, { "class", "type" });
 
